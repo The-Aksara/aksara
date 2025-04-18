@@ -1,4 +1,4 @@
-import BasicFeature from '@/components/basic/basic-feature'
+import BasicFeature from '@/components/basic/aksara-feature'
 
 export default function Page() {
   return <BasicFeature />
