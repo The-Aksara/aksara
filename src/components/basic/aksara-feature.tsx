@@ -8,6 +8,7 @@ import { ExplorerLink } from '../cluster/cluster-ui'
 import { WalletButton } from '../solana/solana-provider'
 import { AppHero, ellipsify } from '../ui/ui-layout'
 import { useAksaraProgram } from './aksara-data-access'
+import { CreateNoteForm } from './aksara-ui'
 
 export default function BasicFeature() {
   const { publicKey } = useWallet()
@@ -76,9 +77,25 @@ export default function BasicFeature() {
         </div>
       </AppHero>
 
-      {/* Modal remains the same */}
-      <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)} className="fixed inset-0 z-50">
-        {/* ... existing modal code ... */}
+      <Dialog
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        className="fixed inset-0 z-50 flex items-center justify-center"
+      >
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" aria-hidden="true" />
+
+        <div className="relative z-50 w-full max-w-md p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-xl">
+          <CreateNoteForm />
+
+          <div className="mt-4 flex justify-end">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="px-4 py-2 text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-md transition"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
       </Dialog>
     </div>
   ) : (
